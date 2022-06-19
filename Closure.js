@@ -26,7 +26,7 @@ function createFunctionPrinter(input) {
 function outer() {
   let counter = 0; // this variable is outside incrementCounter's scope
   function incrementCounter () {
-    counter ++;
+    counter++;
     console.log('counter', counter);
   }
   return incrementCounter;
@@ -48,9 +48,7 @@ const jasCounter = outer();
 
 
 function addByX(x) {
-    return ((y) => {
-        return y + x;
-    });
+    return ((y) => console.log(y + x));
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -98,7 +96,7 @@ function after(count, func) {
     })
 }
 
-// /*** Uncomment these to check your work! ***/
+/*** Uncomment these to check your work! ***/
 // const called = function() { console.log('hello') };
 // const afterCalled = after(3, called);
 // afterCalled(); // => nothing is printed
@@ -149,12 +147,12 @@ function cycleIterator(array) {
 }
 
 /*** Uncomment these to check your work! ***/
-const threeDayWeekend = ['Fri', 'Sat', 'Sun'];
-const getDay = cycleIterator(threeDayWeekend);
-console.log(getDay()); // => should log 'Fri'
-console.log(getDay()); // => should log 'Sat'
-console.log(getDay()); // => should log 'Sun'
-console.log(getDay()); // => should log 'Fri'
+// const threeDayWeekend = ['Fri', 'Sat', 'Sun'];
+// const getDay = cycleIterator(threeDayWeekend);
+// console.log(getDay()); // => should log 'Fri'
+// console.log(getDay()); // => should log 'Sat'
+// console.log(getDay()); // => should log 'Sun'
+// console.log(getDay()); // => should log 'Fri'
 
 
 // CHALLENGE 10
@@ -181,7 +179,11 @@ function dateStamp(func) {
 
 // CHALLENGE 12
 function censor() {
+    const pairObj = {};
 
+    return (() => {
+        
+    });
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -193,19 +195,28 @@ function censor() {
 
 // CHALLENGE 13
 function createSecretHolder(secret) {
-
+    let currentSecret = secret;
+    return {
+        getSecret() {
+            return currentSecret;
+        },
+        setSecret(newSecret) {
+            currentSecret = newSecret; 
+        }
+    }
 }
 
 // /*** Uncomment these to check your work! ***/
 // obj = createSecretHolder(5)
-// obj.getSecret() // => returns 5
+// console.log(obj.getSecret()) // => returns 5
 // obj.setSecret(2)
-// obj.getSecret() // => returns 2
+// console.log(obj.getSecret()) // => returns 2
 
 
 // CHALLENGE 14
 function callTimes() {
-
+    let callTimes = 0
+    return (() => console.log(++callTimes))
 }
 
 // /*** Uncomment these to check your work! ***/
