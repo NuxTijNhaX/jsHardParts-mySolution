@@ -180,9 +180,23 @@ function dateStamp(func) {
 // CHALLENGE 12
 function censor() {
     const pairObj = {};
+    let result;
 
-    return (() => {
-        
+    return ((...args) => {
+        if(args.length === 2) {
+            for (let index = 0; index < args.length; index++) {
+                pairObj[args[index++]] = args[index];
+            }
+        }
+        else if(args.length === 1) {
+            result = args[0];
+            for (const key in pairObj) {
+                const reg = new RegExp(key,"g");
+                result = result.replace(reg, pairObj[key]);
+            }
+        }
+
+        return result;
     });
 }
 
@@ -230,7 +244,13 @@ function callTimes() {
 
 // CHALLENGE 15
 function roulette(num) {
+    let counter = 1;
 
+    return (() => {
+        const result = counter < num ? "spin" : counter === num ? "win" : "pick a number to play again";
+        counter++;
+        return result;
+    })
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -244,17 +264,28 @@ function roulette(num) {
 
 // CHALLENGE 16
 function average() {
+    let counter = 1;
+    let currentSum = 0;
+    let currentAverage = 0;
 
+    return ((...args) => {
+        if(args.length === 1) {
+            currentSum += args[0];
+            currentAverage = currentSum / counter++;
+        }
+
+        return currentAverage;
+    })
 }
 
 // /*** Uncomment these to check your work! ***/
-// const avgSoFar = average();
-// console.log(avgSoFar()); // => should log 0
-// console.log(avgSoFar(4)); // => should log 4
-// console.log(avgSoFar(8)); // => should log 6
-// console.log(avgSoFar()); // => should log 6
-// console.log(avgSoFar(12)); // => should log 8
-// console.log(avgSoFar()); // => should log 8
+const avgSoFar = average();
+console.log(avgSoFar()); // => should log 0
+console.log(avgSoFar(4)); // => should log 4
+console.log(avgSoFar(8)); // => should log 6
+console.log(avgSoFar()); // => should log 6
+console.log(avgSoFar(12)); // => should log 8
+console.log(avgSoFar()); // => should log 8
 
 
 // CHALLENGE 17
