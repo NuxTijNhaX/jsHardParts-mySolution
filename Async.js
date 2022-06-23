@@ -123,5 +123,3 @@ function sayHowdy() {
   // setTimeout(function() { console.log(giveHiSometimes()); }, 2000); // -> undefined
   // setTimeout(function() { console.log(giveHiSometimes()); }, 4000); // -> undefined
   // setTimeout(function() { console.log(giveHiSometimes()); }, 8000); // -> 'hi'
-  
-  
